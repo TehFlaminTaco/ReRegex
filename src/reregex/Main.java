@@ -18,7 +18,8 @@ public class Main {
 		String[] code = read_code(target).replaceAll("(?<!\\\\)#[^\r\n]*", "")
 										 .replaceAll("\r?\n", "")
 										 .replaceAll("\\(\\?#.*?\\)", "")
-		String toexecute;								 .split("(?<!\\\\)/");
+										 .split("(?<!\\\\)/");
+		String toexecute;
 		if(code.length%2!=1){
 			toexecute=new Scanner(System.in).useDelimiter("\\Z").next();
 		} else {
