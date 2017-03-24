@@ -1,0 +1,5 @@
+#I'm going to assume none of these contain anything useful or critical to the execution of the .jar
+/.settings/*
+/bin/reregex/*
+.project
+.classpath
