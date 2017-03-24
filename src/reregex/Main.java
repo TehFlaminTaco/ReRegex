@@ -21,7 +21,7 @@ public class Main {
 										 .split("(?<!\\\\)/");
 		String toexecute;
 		if(code.length%2!=1){
-			toexecute=new Scanner(System.in).useDelimiter("\\Z").next();
+			toexecute=new Scanner(System.in).useDelimiter("\\Z").next().replaceAll("\r(?=\n)","");
 		} else {
 			toexecute = code[code.length-1];
 		}
