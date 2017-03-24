@@ -28,7 +28,7 @@ public class Main {
 		}
 		
 		String toexecute = code[code.length-1];
-		String old="";
+		String old=new Scanner(System.in).useDelimiter("\\Z").next();
 		while(!toexecute.equals(old)){
 			old = toexecute;
 			for(String e : regexes.keySet()){
