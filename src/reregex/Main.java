@@ -19,15 +19,15 @@ public class Main {
 										 .replaceAll("\r?\n", "")
 										 .replaceAll("\\(\\?#.*?\\)", "")
 										 .split("(?<!\\\\)/");
+		String toexecute;
 		if(code.length%2!=1){
-			System.err.println("No default code detected, nothing to run.");
-			return;
+			toexecute=new Scanner(System.in).useDelimiter("\\Z").next().replaceAll("\r(?=\n)","");
+		} else {
+			toexecute = code[code.length-1];
 		}
 		for(int i=0; i<code.length-1;i+=2){
 			regexes.put(code[i], code[i+1].replaceAll("\\\\/", "/"));
 		}
-		
-		String toexecute = code[code.length-1];
 		String old="";
 		while(!toexecute.equals(old)){
 			old = toexecute;
