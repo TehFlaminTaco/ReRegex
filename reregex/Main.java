@@ -38,13 +38,14 @@ public class Main {
 			regexes.put(code[i], code[i+1].replaceAll("\\\\/", "/"));
 		}
 		
-		String toexecute = code[code.length-1];
+		String toexecute = code[code.length-1].replaceAll("\\\\/", "/");
 		String old="";
 		while(!toexecute.equals(old)){
 			old = toexecute;
 			for(String e : regexes.keySet()){
 				toexecute = toexecute.replaceAll(e, regexes.get(e));
 			}
+			//System.err.println(toexecute);
 		}
 		System.out.println(toexecute);
 	}
@@ -87,7 +88,7 @@ public class Main {
 						while((line = br.readLine())!=null){
 							out += line + "\n";
 						}
-						sb.insert(0, out);
+						sb.insert(0, String.join("/",parse_code(out))+"/");
 						found = true;
 						br.close();
 						break;
