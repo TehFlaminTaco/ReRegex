@@ -28,7 +28,6 @@ public class Main {
 		HashMap<String, String> regexes = new HashMap<String,String>(13);
 		
 		stdin = read_stdin();
-		
 		String[] code = parse_code(read_code(target));
 		if(code.length%2!=1){
 			System.err.println("No default code detected, nothing to run.");
@@ -45,7 +44,9 @@ public class Main {
 			for(String e : regexes.keySet()){
 				toexecute = toexecute.replaceAll(e, regexes.get(e));
 			}
-			//System.err.println(toexecute);
+			if(args.length>1){
+				System.err.println(toexecute);
+			}
 		}
 		System.out.println(toexecute);
 	}
@@ -129,7 +130,8 @@ public class Main {
 		strings = strs.toArray(strings);
 		
 		for (int i=0; i<strings.length; i++){
-			strings[i] = strings[i].replaceAll("\\(\\?#input\\)", (stdin).replaceAll("([^a-zA-Z0-9])", "\\\\$1"));
+			strings[i] = strings[i].replaceAll("\\(\\?#input\\)", (stdin).replaceAll("([^a-zA-Z0-9])", "\\\\$1"))
+							       .replaceAll("\\\\n", "\n");
 		}
 		return strings;
 	}
